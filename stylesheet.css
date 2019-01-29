@@ -1,0 +1,60 @@
+
+body,html {
+overflow-x: hidden;
+}
+
+
+
+h1{ 
+    font-family: 'Julius Sans One', sans-serif;
+    position: relative;
+    text-align: center;
+}
+
+.magic{
+    position: relative;
+    top:20px;
+    text-align: center;
+
+}
+
+#submit{
+    background:-webkit-linear-gradient(45deg, #7abcff 0%,#60abf8 44%,#4096ee 100%);
+    color:white;
+    height: 40px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 15px;
+    
+}
+
+
+#submit:focus{
+    outline: none;
+}
+
+#search{
+    height: 40px;
+    width: 320px;
+    border-radius: 4px;
+    border:0.5px solid  black;
+    background: white;
+
+}
+
+#search:focus{
+    outline: none;
+}
+
+#photos{
+    text-align: center;
+}
+
+ul,li{
+    list-style: none;
+    position: relative;
+    right:14px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Julius+Sans+One" rel="stylesheet">
+
+    <title>Gallery App</title>
+</head>
+
+<body>
+    <h1>The Gallery</h1>
+    <hr>
+    <div class='magic'>
+      <form>
+            <input type='search' id='search' placeholder=' type to search'>
+            <input type='submit' id='submit' value='navigate'>
+    </form>
+    </div>
+    <br>
+    <div>
+        <ul id='photos'>
+
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            $('form').submit(function (evt) {
+                evt.preventDefault();
+                var $searchField = $('#search');
+                var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+
+                var animal = $searchField.val();
+
+                var flickrOptions = {
+                    tags: animal,
+                    format: "json"
+                };
+
+
+                function displayPhotos(data) {
+                    var photoHTML = '<ul>';
+                    $.each(data.items, function (i, photo) {
+                        photoHTML += '<li class="grid-25 tablet-grid-50">';
+                        photoHTML += '<a href="' + photo.link + '" class="image">';
+                        photoHTML += '<img src="' + photo.media.m + '"></a></li>';
+                    }); // end each
+                    photoHTML += '</ul>';
+                    $('#photos').html(photoHTML);
+                }
+                $.getJSON(flickrAPI, flickrOptions, displayPhotos);
+
+            });
+        });
+    </script>
+</body>
+
+</html>
